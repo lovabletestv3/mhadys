@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
-import type { OrbitControls as OrbitImpl } from "three-stdlib";
+type OrbitImpl = { target: THREE.Vector3; update: () => void };
 import { getService, type ServiceId } from "@/lib/services";
 import { easeInOutQuint } from "./paths";
 
@@ -73,10 +73,8 @@ export function CameraRig({ active, compact, reducedMotion, onUserInteract, free
       }}
       onEnd={() => {
         dragging.current = false;
-        // smoothly return to framing from wherever the user left it
-        from.current.pos.copy(camera.position);
-        from.current.tgt.copy(controls.current!.target);
-        t0.current = -1;
+        // stay where the user left the view until the focus changes
+        t0.current = -2;
       }}
     />
   );
