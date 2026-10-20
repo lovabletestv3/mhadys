@@ -55,6 +55,7 @@ export function CameraRig({ active, compact, reducedMotion, onUserInteract, free
       camera.position.y += Math.sin(t * 0.3) * 0.15;
     }
     c.update();
+    (window as unknown as { __cam: unknown }).__cam = [camera.position.toArray(), c.target.toArray(), u];
   });
 
   return (
