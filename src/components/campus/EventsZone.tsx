@@ -57,7 +57,7 @@ export function EventsZone() {
       {/* stage */}
       <Box p={[cx, 0.35, -3.7]} s={[4.5, 0.4, 1.2]} m={stageMat} />
       <Box p={[cx, 1.8, -4.35]} s={[4, 2.4, 0.05]} m={stageMat} />
-      <pointLight position={[cx, 2.6, -1]} intensity={18} distance={10} color="#c4a2ff" />
+      <pointLight position={[cx, 2.6, -1]} intensity={10} distance={9} color="#c4a2ff" />
       <pointLight position={[cx, 2.4, 5.8]} intensity={10} distance={9} color="#ffcf8a" />
       <InstancedGeo items={tables} geometry={GEO.cyl} material={M.linen} />
       <InstancedGeo items={tableLegs} geometry={GEO.cyl} material={M.linen} cast={false} />

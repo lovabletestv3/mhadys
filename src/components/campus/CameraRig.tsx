@@ -17,7 +17,7 @@ export function CameraRig({ active, compact, reducedMotion, onUserInteract, free
   const dragging = useRef(false);
   const initialized = useRef(false);
 
-  const offset = compact ? new THREE.Vector3(6, 19, 22) : new THREE.Vector3(7, 12.5, 15.5);
+  const offset = compact ? new THREE.Vector3(5, 26, 30) : new THREE.Vector3(9, 19, 23);
 
   const retarget = () => {
     const s = getService(active);

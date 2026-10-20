@@ -68,12 +68,12 @@ export function Experience() {
         <Canvas shadows dpr={[1, 1.75]} camera={{ position: [-8, 14, 18], fov: isMobile ? 50 : 38 }} gl={{ antialias: true }}>
           <color attach="background" args={["#070d1f"]} />
           <fog attach="fog" args={["#0a1430", 34, 80]} />
-          <hemisphereLight args={["#5b7bd8", "#0b1226", 0.9]} />
+          <hemisphereLight args={["#5b7bd8", "#0b1226", 0.45]} />
           <ambientLight intensity={0.25} />
           <directionalLight position={[-12, 22, 14]} intensity={1.1} color="#9fb8ff" castShadow shadow-mapSize={[2048, 2048]} shadow-camera-left={-32} shadow-camera-right={32} shadow-camera-top={20} shadow-camera-bottom={-20} shadow-bias={-0.0005} />
           <Suspense fallback={null}>
             <Environment resolution={64}>
-              <Lightformer intensity={1.2} color="#6d8cff" position={[0, 8, 0]} scale={[20, 20, 1]} rotation-x={Math.PI / 2} />
+              <Lightformer intensity={0.5} color="#6d8cff" position={[0, 8, 0]} scale={[20, 20, 1]} rotation-x={Math.PI / 2} />
               <Lightformer intensity={0.8} color="#c4a2ff" position={[-10, 2, 4]} rotation-y={Math.PI / 2} scale={[20, 2, 1]} />
               <Lightformer intensity={0.8} color="#5eead4" position={[10, 2, 4]} rotation-y={-Math.PI / 2} scale={[20, 2, 1]} />
             </Environment>
@@ -174,7 +174,7 @@ export function Experience() {
       </AnimatePresence>
 
       {/* Category strip */}
-      <div className="absolute inset-x-3 bottom-[78px] z-30 md:bottom-[92px] md:left-1/2 md:right-auto md:-translate-x-1/2">
+      <div className="absolute inset-x-3 bottom-[78px] z-30 md:bottom-[92px] md:left-1/2 md:right-auto md:-translate-x-1/2 md:max-w-[calc(100vw-4rem)]">
         <div className="glass-pill no-scrollbar flex items-center gap-1 overflow-x-auto p-1.5 md:gap-2 md:p-2">
           {cats.map((c, i) => {
             const Icon = CAT_ICONS[i] ?? Tag;
@@ -210,21 +210,21 @@ export function Experience() {
           <button className="icon-btn h-8 w-8" aria-label={autoplay ? "Pause" : "Play"} onClick={() => setAutoplay((v) => !v)}>
             {autoplay ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
           </button>
-          <span className="text-sm text-foreground">Auto Play</span>
+          <span className="whitespace-nowrap text-sm text-foreground">Auto Play</span>
           <button role="switch" aria-checked={autoplay} aria-label="Toggle autoplay" onClick={() => setAutoplay((v) => !v)} className={`switch ${autoplay ? "switch-on" : ""}`}><span /></button>
         </div>
-        <ul className="mx-auto hidden items-center lg:flex">
+        <ul className="mx-auto hidden items-center xl:flex">
           {TRUST.map(({ icon: Icon, title, sub }, i) => (
             <li key={title} className={`flex items-center gap-2.5 px-5 ${i ? "border-l border-border" : ""}`}>
               <Icon className="h-5 w-5 text-muted-foreground" strokeWidth={1.5} />
               <div className="leading-tight">
-                <div className="text-xs text-foreground/85">{title}</div>
-                <div className="text-[10px] text-muted-foreground">{sub}</div>
+                <div className="whitespace-nowrap text-xs text-foreground/85">{title}</div>
+                <div className="whitespace-nowrap text-[10px] text-muted-foreground">{sub}</div>
               </div>
             </li>
           ))}
         </ul>
-        <button className={`glass-pill ml-auto flex items-center gap-2 px-4 py-2.5 text-sm lg:ml-0 ${freeLook ? "text-primary" : "text-foreground"}`} onClick={() => { setFreeLook((v) => !v); setPanelOpen(false); }} aria-pressed={freeLook}>
+        <button className={`glass-pill ml-auto flex whitespace-nowrap items-center gap-2 px-4 py-2.5 text-sm xl:ml-0 ${freeLook ? "text-primary" : "text-foreground"}`} onClick={() => { setFreeLook((v) => !v); setPanelOpen(false); }} aria-pressed={freeLook}>
           <Orbit className="h-4 w-4" /> {freeLook ? "Free Explore" : "3D Experience"}
           <span className={`h-1.5 w-1.5 rounded-full ${freeLook ? "bg-primary" : "bg-muted-foreground"}`} />
         </button>

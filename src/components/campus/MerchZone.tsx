@@ -78,7 +78,7 @@ export function MerchZone() {
       <Box p={[cx, 4.45, 3.9]} s={[11, 0.18, 0.18]} m={M.rack} />
       <Box p={[cx, 0.5, 3.95]} s={[11, 0.08, 0.08]} m={accentStrip} cast={false} />
       {[-5.4, 5.4].map((x) => <Box key={x} p={[cx + x, 2.2, 3.9]} s={[0.2, 4.4, 0.2]} m={M.wallDark} />)}
-      <pointLight position={[cx, 3.6, -0.5]} intensity={20} distance={12} color="#cfe0ff" />
+      <pointLight position={[cx, 3.6, -0.5]} intensity={7} distance={10} color="#cfe0ff" />
       {/* loading dock */}
       <Box p={[cx + 1.6, 0.25, 4.2]} s={[2.6, 0.5, 0.8]} m={M.concrete} />
       <InstancedBoxes items={racks} material={M.rack} />

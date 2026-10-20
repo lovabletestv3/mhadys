@@ -95,7 +95,7 @@ function Marker({ id, active, onSelect, showLabel }: { id: ServiceId; active: bo
       ring.current.scale.setScalar(THREE.MathUtils.lerp(ring.current.scale.x, target, k));
     }
     if (beam.current) (beam.current.material as THREE.MeshBasicMaterial).opacity = THREE.MathUtils.lerp((beam.current.material as THREE.MeshBasicMaterial).opacity, active ? 0.35 : 0.08, k);
-    if (light.current) light.current.intensity = THREE.MathUtils.lerp(light.current.intensity, active ? 40 : 0, k);
+    if (light.current) light.current.intensity = THREE.MathUtils.lerp(light.current.intensity, active ? 14 : 0, k);
   });
   const Icon = ICONS[id];
   const [x, y, z] = s.marker;
