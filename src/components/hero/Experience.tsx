@@ -61,6 +61,7 @@ export function Experience() {
 
   const svc = getService(active);
   const cats = svc.categories;
+  const spot = svc.hotspots[hotspot] ?? svc.hotspots[0]!;
 
   return (
     <div className="hero-root fixed inset-0 overflow-hidden bg-background">
@@ -156,18 +157,18 @@ export function Experience() {
             <div className="flex items-start justify-between">
               <div>
                 <p className="eyebrow service-text">{svc.label}</p>
-                <h2 className="mt-1 text-lg font-bold text-foreground">{svc.hotspots[hotspot].title}</h2>
+                <h2 className="mt-1 text-lg font-bold text-foreground">{spot.title}</h2>
               </div>
               <button className="icon-btn -mr-2 -mt-1" aria-label="Close" onClick={() => setPanelOpen(false)}><X className="h-4 w-4" /></button>
             </div>
-            <p className="mt-2 text-sm text-muted-foreground">{svc.hotspots[hotspot].description}</p>
+            <p className="mt-2 text-sm text-muted-foreground">{spot.description}</p>
             <div className="mt-4 flex flex-wrap gap-1.5">
               {svc.hotspots.map((h, i) => (
                 <button key={h.title} onClick={() => { setHotspot(i); hold(); }} className={`chip ${i === hotspot ? "chip-active" : ""}`}>{h.title}</button>
               ))}
             </div>
-            <button className="cta-service mt-4" onClick={() => toast(`${svc.hotspots[hotspot].action}`, { description: "This section is coming soon." })}>
-              {svc.hotspots[hotspot].action} <ArrowRight className="h-4 w-4" />
+            <button className="cta-service mt-4" onClick={() => toast(`${spot.action}`, { description: "This section is coming soon." })}>
+              {spot.action} <ArrowRight className="h-4 w-4" />
             </button>
           </motion.aside>
         )}
