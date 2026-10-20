@@ -7,7 +7,7 @@ import type { P2 } from "./paths";
 const tealStrip = new THREE.MeshBasicMaterial({ color: "#2dd4bf" });
 const brushMat = new THREE.MeshStandardMaterial({ color: "#3b82f6", emissive: "#1d4ed8", emissiveIntensity: 0.6, roughness: 0.9 });
 const foamMat = new THREE.MeshStandardMaterial({ color: "#e0f2fe", transparent: true, opacity: 0.55, emissive: "#7dd3fc", emissiveIntensity: 0.3 });
-const COLORS = ["#dc2626", "#f8fafc", "#0f172a", "#2563eb", "#9ca3af", "#b91c1c", "#14532d"];
+const COLORS = ["#dc2626", "#f8fafc", "#0f172a", "#2563eb", "#9ca3af", "#b91c1c", "#14532d"] as const;
 
 export function AutoZone() {
   const cx = 14;
@@ -69,7 +69,7 @@ export function AutoZone() {
       {/* cars cycling through the wash */}
       {[0, 0.33, 0.66].map((o, i) => (
         <PathMover key={i} path={washPath} speed={1.4} offset={o}>
-          <CarModel color={COLORS[i + 3]} />
+          <CarModel color={COLORS[(i + 3) as 3]} />
         </PathMover>
       ))}
 
