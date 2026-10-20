@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- The 3D hero is procedural R3F (src/components/campus/*) with service data in src/lib/services.ts; keep the scene asset-free so it never hangs on a missing model.
