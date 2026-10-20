@@ -80,4 +80,4 @@ export const USER_HOLD_MS = 8000;
 
 export const getService = (id: ServiceId) => SERVICES.find((s) => s.id === id)!;
 export const nextService = (id: ServiceId): ServiceId =>
-  SERVICE_ORDER[(SERVICE_ORDER.indexOf(id) + 1) % SERVICE_ORDER.length];
+  SERVICE_ORDER[(SERVICE_ORDER.indexOf(id) + 1) % SERVICE_ORDER.length]!;
