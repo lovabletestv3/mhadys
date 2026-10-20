@@ -8,8 +8,8 @@ export function sampleLoop(points: P2[], t: number, closed = true) {
   let total = 0;
   const n = closed ? points.length : points.length - 1;
   for (let i = 0; i < n; i++) {
-    const a = points[i];
-    const b = points[(i + 1) % points.length];
+    const a = points[i]!;
+    const b = points[(i + 1) % points.length]!;
     const len = Math.hypot(b[0] - a[0], b[1] - a[1]);
     segs.push({ a, b, len });
     total += len;
@@ -27,7 +27,7 @@ export function sampleLoop(points: P2[], t: number, closed = true) {
     }
     d -= s.len;
   }
-  const l = segs[segs.length - 1];
+  const l = segs[segs.length - 1]!;
   return { x: l.b[0], z: l.b[1], yaw: 0, total };
 }
 

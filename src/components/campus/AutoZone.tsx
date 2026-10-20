@@ -39,7 +39,7 @@ export function AutoZone() {
       {bayCars.map(([x, z, c], i) => (
         <group key={i} position={[x, 0.12, z]}><CarModel color={c} /></group>
       ))}
-      {[[-3.1, 3], [-1.7, 4.2], [0.7, 2.9], [3, 4.1], [1.6, 3.4]].map(([x, z], i) => (
+      {([[-3.1, 3], [-1.7, 4.2], [0.7, 2.9], [3, 4.1], [1.6, 3.4]] as [number, number][]).map(([x, z], i) => (
         <Person key={i} pos={[cx + x, 0.12, z]} idle offset={i * 0.37} color="#0d9488" />
       ))}
       <Person path={[[cx - 3.8, 2], [cx + 3.8, 2]]} pingPong speed={0.6} color="#0f766e" />
@@ -58,7 +58,7 @@ export function AutoZone() {
         <Box p={[-1.12, 2.3, 0]} s={[0.05, 0.08, 4.6]} m={tealStrip} cast={false} />
         <Box p={[1.12, 2.3, 0]} s={[0.05, 0.08, 4.6]} m={tealStrip} cast={false} />
         <group ref={brushes}>
-          {[[-0.85, -1], [0.85, -1], [-0.85, 1], [0.85, 1]].map(([x, z], i) => (
+          {([[-0.85, -1], [0.85, -1], [-0.85, 1], [0.85, 1]] as [number, number][]).map(([x, z], i) => (
             <mesh key={i} position={[x, 0.9, z]} geometry={GEO.cyl} material={brushMat} scale={[0.4, 1.6, 0.4]} />
           ))}
         </group>

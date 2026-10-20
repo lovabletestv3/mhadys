@@ -91,7 +91,7 @@ export function MerchZone() {
       <PathMover path={truckPath} speed={1.6} pingPong offset={0.2}><TruckModel /></PathMover>
 
       {[0, 0.25, 0.5, 0.75].map((o, i) => <Person key={i} path={workerPath} speed={0.7} offset={o} color="#1d4ed8" />)}
-      {[[-2.5, 2.1], [0.2, 2.1], [2.9, 2.1], [-1, -0.05], [1.8, -0.05]].map(([x, z], i) => (
+      {([[-2.5, 2.1], [0.2, 2.1], [2.9, 2.1], [-1, -0.05], [1.8, -0.05]] as [number, number][]).map(([x, z], i) => (
         <Person key={`p${i}`} pos={[cx + x, 0.12, z]} idle offset={i * 0.3} color="#2563eb" />
       ))}
     </group>

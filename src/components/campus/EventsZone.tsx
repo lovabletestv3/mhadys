@@ -15,7 +15,7 @@ export function EventsZone() {
     for (let i = 0; i < 4; i++) for (let j = 0; j < 3; j++) out.push([cx - 3 + i * 2, 0.45, -2.6 + j * 1.7, 0.9, 0.06, 0.9]);
     return out;
   }, []);
-  const tableLegs = useMemo(() => tables.map((t) => [t[0], 0.25, t[2], 0.12, 0.45, 0.12]), [tables]);
+  const tableLegs = useMemo(() => tables.map((t) => [t[0]!, 0.25, t[2]!, 0.12, 0.45, 0.12]), [tables]);
   const fairy = useMemo(() => {
     const out: number[][] = [];
     for (let i = 0; i <= 18; i++) {
@@ -90,12 +90,12 @@ export function EventsZone() {
 
       {/* people */}
       {[0, 0.17, 0.33, 0.5, 0.67, 0.83].map((o, i) => (
-        <Person key={i} path={guestPath} speed={0.5} offset={o} color={["#f8fafc", "#f472b6", "#1e293b", "#e9d5ff", "#0f172a", "#fca5a5"][i]} />
+        <Person key={i} path={guestPath} speed={0.5} offset={o} color={["#f8fafc", "#f472b6", "#1e293b", "#e9d5ff", "#0f172a", "#fca5a5"][i] ?? "#fff"} />
       ))}
       <Person path={staffPath} speed={0.8} offset={0} color="#111827" />
       <Person path={staffPath} speed={0.8} offset={0.5} color="#111827" />
       <Person path={confPath} speed={0.5} pingPong color="#334155" />
-      {[[-2.6, -1.8], [-0.6, -1.8], [1.4, 0.8], [-2.6, 0.8], [0.4, -3.0]].map(([x, z], i) => (
+      {([[-2.6, -1.8], [-0.6, -1.8], [1.4, 0.8], [-2.6, 0.8], [0.4, -3.0]] as [number, number][]).map(([x, z], i) => (
         <Person key={`s${i}`} pos={[cx + x, 0.16, z]} idle offset={i * 0.2} color={i % 2 ? "#e2e8f0" : "#6d28d9"} />
       ))}
     </group>
