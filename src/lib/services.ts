@@ -28,7 +28,7 @@ export const SERVICES: Service[] = [
     color: "#a78bfa",
     token: "events",
     target: [-15, 0, 1],
-    marker: [-15, 7.5, -1],
+    marker: [-15, 5.5, -1],
     categories: ["All", "Popular", "Packages", "Weddings", "Corporate"],
     hotspots: [
       { title: "Weddings & Celebrations", description: "Garden ceremonies, receptions and milestone celebrations styled end to end by our coordinators.", action: "Explore Packages" },
@@ -45,7 +45,7 @@ export const SERVICES: Service[] = [
     color: "#60a5fa",
     token: "merch",
     target: [0, 0, 0],
-    marker: [0, 8.5, -2],
+    marker: [0, 6, -2],
     categories: ["All", "Promo", "Popular", "New Arrivals", "Bundles"],
     hotspots: [
       { title: "Product Collections", description: "Curated merchandise collections, sorted and packed in our fulfillment center.", action: "Browse Products" },
@@ -62,7 +62,7 @@ export const SERVICES: Service[] = [
     color: "#2dd4bf",
     token: "auto",
     target: [15, 0, 0],
-    marker: [15, 7.5, -2],
+    marker: [15, 5.5, -2],
     categories: ["All", "Popular", "Car Wash", "Detailing", "Polishing"],
     hotspots: [
       { title: "Car Wash", description: "Automatic tunnel wash with soft rollers, foam and spot-free rinse.", action: "Explore Services" },

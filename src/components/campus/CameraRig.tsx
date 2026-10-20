@@ -22,6 +22,7 @@ export function CameraRig({ active, compact, reducedMotion, onUserInteract, free
   const retarget = () => {
     const s = getService(active);
     const tgt = new THREE.Vector3(...s.target);
+    tgt.y += 1.5;
     if (compact) tgt.z += 1.5;
     to.current.tgt.copy(tgt);
     to.current.pos.copy(tgt).add(offset);
@@ -55,7 +56,6 @@ export function CameraRig({ active, compact, reducedMotion, onUserInteract, free
       camera.position.y += Math.sin(t * 0.3) * 0.15;
     }
     c.update();
-    (window as unknown as { __cam: unknown }).__cam = [camera.position.toArray(), c.target.toArray(), u];
   });
 
   return (
