@@ -44,8 +44,8 @@ export function InstancedBoxes({ items, material, cast = true }: { items: number
   useLayoutEffect(() => {
     const o = new THREE.Object3D();
     items.forEach((it, i) => {
-      o.position.set(it[0], it[1], it[2]);
-      o.scale.set(it[3], it[4], it[5]);
+      o.position.set(it[0]!, it[1]!, it[2]!);
+      o.scale.set(it[3]!, it[4]!, it[5]!);
       o.rotation.set(0, it[6] ?? 0, 0);
       o.updateMatrix();
       ref.current!.setMatrixAt(i, o.matrix);
@@ -60,8 +60,8 @@ export function InstancedGeo({ items, geometry, material, cast = true }: { items
   useLayoutEffect(() => {
     const o = new THREE.Object3D();
     items.forEach((it, i) => {
-      o.position.set(it[0], it[1], it[2]);
-      o.scale.set(it[3], it[4], it[5]);
+      o.position.set(it[0]!, it[1]!, it[2]!);
+      o.scale.set(it[3]!, it[4]!, it[5]!);
       o.updateMatrix();
       ref.current!.setMatrixAt(i, o.matrix);
     });
