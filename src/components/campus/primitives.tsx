@@ -78,10 +78,21 @@ const shirt = (c: string) => {
   if (!shirtMats.has(c)) shirtMats.set(c, new THREE.MeshStandardMaterial({ color: c, roughness: 0.7 }));
   return shirtMats.get(c)!;
 };
+const std = (c: string, r = 0.8) => new THREE.MeshStandardMaterial({ color: c, roughness: r });
+const SKINS = ["#f1c7a5", "#d9a882", "#b98160", "#8d5a3c", "#5e3a24"].map((c) => std(c, 0.7));
+const HAIRS = ["#1a1410", "#3b2416", "#6b4a2b", "#2a2a2e", "#a8875a"].map((c) => std(c, 0.9));
+const PANTS = ["#1f2937", "#111827", "#334155", "#3f3a33", "#1e3a5f"].map((c) => std(c));
+const shoeMat = std("#0b0b0e", 0.6);
+const limbGeo = new THREE.CapsuleGeometry(0.5, 1, 3, 8);
+const torsoGeo = new THREE.CapsuleGeometry(0.5, 0.6, 4, 10);
 
 export function Person({ path, speed = 0.6, color = "#2c5bd6", offset = 0, pingPong = false, idle = false, pos }: { path?: P2[]; speed?: number; color?: string; offset?: number; pingPong?: boolean; idle?: boolean; pos?: [number, number, number] }) {
   const g = useRef<THREE.Group>(null);
   const body = useRef<THREE.Group>(null);
+  const legL = useRef<THREE.Group>(null);
+  const legR = useRef<THREE.Group>(null);
+  const armL = useRef<THREE.Group>(null);
+  const armR = useRef<THREE.Group>(null);
   const len = useMemo(() => (path ? loopLength(path) : 1), [path]);
   useFrame(({ clock }) => {
     const t = clock.elapsedTime;
