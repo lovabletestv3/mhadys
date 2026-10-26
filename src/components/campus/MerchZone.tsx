@@ -92,8 +92,8 @@ export function MerchZone() {
           <Box p={[cx + 5.9, 0.35, z]} s={[0.8, 0.7, 2]} m={M.concrete} />
         </group>
       ))}
-      <group position={[cx + 8.2, 0, -2]} rotation-y={-Math.PI / 2}><TruckModel /></group>
-      <group position={[cx + 8.2, 0, 2.8]} rotation-y={-Math.PI / 2}><TruckModel color="#dbe6f7" /></group>
+      <group position={[cx + 7.9, 0, -2]} rotation-y={-Math.PI / 2}><TruckModel /></group>
+      <group position={[cx + 7.9, 0, 2.8]} rotation-y={-Math.PI / 2}><TruckModel color="#dbe6f7" /></group>
       <Person pos={[cx + 6.3, 0.7, 0.4]} idle color="#f59e0b" />
       <Person pos={[cx + 6.5, 0.7, -1.2]} idle offset={0.5} color="#1d4ed8" />
       <InstancedBoxes items={racks} material={M.rack} />
