@@ -36,6 +36,13 @@ export function AutoZone() {
       ))}
       {/* service bays */}
       {[-3.6, -1.2, 1.2, 3.6].map((x) => <Box key={x} p={[cx + x, 0.13, 3.6]} s={[0.06, 0.02, 2.6]} m={tealStrip} cast={false} />)}
+      {/* layered canopy slab over the bays + columns */}
+      <Box p={[cx, 3.45, 3.4]} s={[8.4, 0.14, 3.2]} m={M.wallWhite} />
+      <Box p={[cx, 3.36, 4.98]} s={[8.4, 0.05, 0.05]} m={tealStrip} cast={false} />
+      {[-4, 4].map((x) => <Box key={x} p={[cx + x, 1.72, 4.8]} s={[0.2, 3.4, 0.2]} m={M.wallWhite} />)}
+      {/* tool cabinets + lift posts */}
+      {[-3.4, 3.4].map((x) => <Box key={x} p={[cx + x, 0.55, 2.3]} s={[0.6, 0.9, 0.35]} m={M.rack} />)}
+      {[-0.9, 0.9].map((x) => <Box key={x} p={[cx + x, 0.9, 3.6]} s={[0.12, 1.6, 0.12]} m={M.yellow} />)}
       {bayCars.map(([x, z, c], i) => (
         <group key={i} position={[x, 0.12, z]}><CarModel color={c} /></group>
       ))}

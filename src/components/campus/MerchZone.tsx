@@ -81,6 +81,21 @@ export function MerchZone() {
       <pointLight position={[cx, 3.6, -0.5]} intensity={7} distance={10} color="#cfe0ff" />
       {/* loading dock */}
       <Box p={[cx + 1.6, 0.25, 4.2]} s={[2.6, 0.5, 0.8]} m={M.concrete} />
+      {/* roof-edge parapet + brand band */}
+      <Box p={[cx, 4.7, -4.9]} s={[11.4, 0.35, 0.3]} m={M.wallDark} />
+      <Box p={[cx, 4.7, -4.73]} s={[6, 0.12, 0.04]} m={accentStrip} cast={false} />
+      {/* side loading doors with dock bumpers + staged truck */}
+      {[-2, 0.4, 2.8].map((z) => (
+        <group key={z}>
+          <Box p={[cx + 5.52, 1.3, z]} s={[0.05, 2.4, 1.8]} m={M.concrete} cast={false} />
+          <Box p={[cx + 5.55, 2.55, z]} s={[0.06, 0.1, 1.9]} m={accentStrip} cast={false} />
+          <Box p={[cx + 5.9, 0.35, z]} s={[0.8, 0.7, 2]} m={M.concrete} />
+        </group>
+      ))}
+      <group position={[cx + 7.9, 0, -2]} rotation-y={-Math.PI / 2}><TruckModel /></group>
+      <group position={[cx + 7.9, 0, 2.8]} rotation-y={-Math.PI / 2}><TruckModel color="#dbe6f7" /></group>
+      <Person pos={[cx + 6.3, 0.7, 0.4]} idle color="#f59e0b" />
+      <Person pos={[cx + 6.5, 0.7, -1.2]} idle offset={0.5} color="#1d4ed8" />
       <InstancedBoxes items={racks} material={M.rack} />
       <InstancedBoxes items={rackBoxes} material={M.cardboard} />
       <InstancedBoxes items={tables} material={M.wallWhite} />
