@@ -1,13 +1,28 @@
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { Box, CarModel, GEO, M, PathMover, Person } from "./primitives";
+import { Box, CarModel, GEO, InstancedBoxes, M, PathMover, Person } from "./primitives";
 import type { P2 } from "./paths";
 
 const tealStrip = new THREE.MeshBasicMaterial({ color: "#2dd4bf" });
 const brushMat = new THREE.MeshStandardMaterial({ color: "#3b82f6", emissive: "#1d4ed8", emissiveIntensity: 0.6, roughness: 0.9 });
 const foamMat = new THREE.MeshStandardMaterial({ color: "#e0f2fe", transparent: true, opacity: 0.55, emissive: "#7dd3fc", emissiveIntensity: 0.3 });
 const COLORS = ["#dc2626", "#f8fafc", "#0f172a", "#2563eb", "#9ca3af", "#b91c1c", "#14532d"] as const;
+
+const BAY_SPACING = 2.4;
+const ROOF_REAR_Z = -2.9;
+const ROOF_FRONT_Z = -0.1;
+
+/** Three shared-edge spaces, with their aisle-facing ends left open. */
+function ParkingRow({ x, y, z, depth, rear = -1 }: { x: number; y: number; z: number; depth: number; rear?: number }) {
+  const lines = useMemo(() => {
+    const dividers = [-1.5, -0.5, 0.5, 1.5].map((offset) =>
+      [x + offset * BAY_SPACING, y + 0.015, z, 0.06, 0.02, depth],
+    );
+    return [...dividers, [x, y + 0.015, z + rear * depth / 2, BAY_SPACING * 3, 0.02, 0.06]];
+  }, [x, y, z, depth, rear]);
+  return <InstancedBoxes items={lines} material={M.laneMark} cast={false} />;
+}
 
 export function AutoZone() {
   const cx = 14;
@@ -19,8 +34,8 @@ export function AutoZone() {
   });
 
   const washPath: P2[] = [[20.8, 7], [20.8, -6], [24.5, -6], [24.5, 7]];
-  const bayCars: [number, number, string][] = [[cx - 2.4, 3.6, COLORS[0]], [cx, 3.6, COLORS[2]], [cx + 2.4, 3.6, COLORS[1]]];
-  const roofCars: [number, number, string][] = [[cx - 2.4, -3.3, COLORS[4]], [cx, -3.3, COLORS[0]], [cx + 2.4, -3.3, COLORS[1]], [cx - 2.4, 0.3, COLORS[3]], [cx + 2.4, 0.3, COLORS[2]]];
+  const bayCars: [number, number, string][] = [[cx - BAY_SPACING, 3.6, COLORS[0]], [cx, 3.6, COLORS[2]], [cx + BAY_SPACING, 3.6, COLORS[1]]];
+  const roofCars: [number, number, string][] = [[cx - BAY_SPACING, ROOF_REAR_Z, COLORS[4]], [cx, ROOF_REAR_Z, COLORS[0]], [cx + BAY_SPACING, ROOF_REAR_Z, COLORS[1]], [cx - BAY_SPACING, ROOF_FRONT_Z, COLORS[3]], [cx + BAY_SPACING, ROOF_FRONT_Z, COLORS[2]]];
 
   return (
     <group>
@@ -31,11 +46,13 @@ export function AutoZone() {
       <Box p={[cx, 3.08, -1.5]} s={[8.2, 0.16, 5.2]} m={M.asphalt} />
       <Box p={[cx, 3.25, 1.1]} s={[8.2, 0.3, 0.06]} m={M.glass} cast={false} />
       <Box p={[cx, 2.7, 1.06]} s={[8, 0.12, 0.04]} m={tealStrip} cast={false} />
+      <ParkingRow x={cx} y={3.16} z={ROOF_REAR_Z} depth={2.2} />
+      <ParkingRow x={cx} y={3.16} z={ROOF_FRONT_Z} depth={2.2} rear={1} />
       {roofCars.map(([x, z, c], i) => (
         <group key={i} position={[x, 3.16, z]}><CarModel color={c} /></group>
       ))}
       {/* service bays */}
-      {[-3.6, -1.2, 1.2, 3.6].map((x) => <Box key={x} p={[cx + x, 0.13, 3.6]} s={[0.06, 0.02, 2.6]} m={tealStrip} cast={false} />)}
+      <ParkingRow x={cx} y={0.12} z={3.6} depth={2.6} />
       {/* layered canopy slab over the bays + columns */}
       <Box p={[cx, 3.45, 3.4]} s={[8.4, 0.14, 3.2]} m={M.wallWhite} />
       <Box p={[cx, 3.36, 4.98]} s={[8.4, 0.05, 0.05]} m={tealStrip} cast={false} />

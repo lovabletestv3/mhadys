@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - The 3D hero is procedural R3F (src/components/campus/*) with service data in src/lib/services.ts; keep the scene asset-free so it never hangs on a missing model.
+- Auto Care parking rows share spacing and row centers with parked cars, with paint just above the slab and open aisle ends, so markings stay aligned and contained on their parking surface.
