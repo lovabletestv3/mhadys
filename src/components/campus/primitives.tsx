@@ -132,25 +132,25 @@ export function Person({ path, speed = 0.6, color = "#2c5bd6", offset = 0, pingP
       <group ref={body} scale={0.95 + (v % 5) * 0.025}>
         {/* legs pivot at hip */}
         <group ref={legL} position={[-0.045, 0.36, 0]}>
-          <mesh geometry={limbGeo} material={pantsM} position-y={-0.17} scale={[0.07, 0.34, 0.07]} castShadow />
+          <mesh geometry={limbGeo} material={pantsM} position-y={-0.17} scale={[0.07, 0.15, 0.07]} castShadow />
           <mesh geometry={GEO.box} material={shoeMat} position={[0, -0.35, 0.02]} scale={[0.065, 0.03, 0.11]} />
         </group>
         <group ref={legR} position={[0.045, 0.36, 0]}>
-          <mesh geometry={limbGeo} material={pantsM} position-y={-0.17} scale={[0.07, 0.34, 0.07]} castShadow />
+          <mesh geometry={limbGeo} material={pantsM} position-y={-0.17} scale={[0.07, 0.15, 0.07]} castShadow />
           <mesh geometry={GEO.box} material={shoeMat} position={[0, -0.35, 0.02]} scale={[0.065, 0.03, 0.11]} />
         </group>
         {/* pelvis + torso */}
         <mesh geometry={GEO.box} material={pantsM} position-y={0.38} scale={[0.17, 0.07, 0.1]} />
-        <mesh geometry={torsoGeo} material={shirtM} position-y={0.52} scale={[0.19, 0.24, 0.11]} castShadow />
+        <mesh geometry={torsoGeo} material={shirtM} position-y={0.52} scale={[0.19, 0.16, 0.11]} castShadow />
         <mesh geometry={GEO.cyl} material={skinM} position-y={0.66} scale={[0.04, 0.04, 0.04]} />
         {/* arms pivot at shoulder */}
         <group ref={armL} position={[-0.115, 0.62, 0]}>
-          <mesh geometry={limbGeo} material={shirtM} position-y={-0.09} scale={[0.05, 0.18, 0.05]} castShadow />
-          <mesh geometry={limbGeo} material={skinM} position-y={-0.22} scale={[0.04, 0.1, 0.04]} />
+          <mesh geometry={limbGeo} material={shirtM} position-y={-0.09} scale={[0.05, 0.08, 0.05]} castShadow />
+          <mesh geometry={limbGeo} material={skinM} position-y={-0.22} scale={[0.04, 0.05, 0.04]} />
         </group>
         <group ref={armR} position={[0.115, 0.62, 0]}>
-          <mesh geometry={limbGeo} material={shirtM} position-y={-0.09} scale={[0.05, 0.18, 0.05]} castShadow />
-          <mesh geometry={limbGeo} material={skinM} position-y={-0.22} scale={[0.04, 0.1, 0.04]} />
+          <mesh geometry={limbGeo} material={shirtM} position-y={-0.09} scale={[0.05, 0.08, 0.05]} castShadow />
+          <mesh geometry={limbGeo} material={skinM} position-y={-0.22} scale={[0.04, 0.05, 0.04]} />
         </group>
         {/* head + hair */}
         <mesh geometry={GEO.sph} material={skinM} position-y={0.74} scale={[0.12, 0.14, 0.12]} castShadow />
