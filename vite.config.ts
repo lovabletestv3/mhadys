@@ -7,6 +7,19 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  vite: {
+    plugins: [
+      {
+        // Dev-only source tags break React Three Fiber elements; strip them from 3D scene files.
+        name: "strip-tsd-source-3d",
+        enforce: "pre",
+        transform(code: string, id: string) {
+          if (!/src\/components\/(campus|hero)\/.*\.tsx/.test(id) || !code.includes("data-tsd-source")) return;
+          return { code: code.replace(/ data-tsd-source="[^"]*"/g, ""), map: null };
+        },
+      },
+    ],
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
